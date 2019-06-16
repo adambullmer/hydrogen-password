@@ -1,0 +1,6 @@
+{{#paper-form onSubmit=(action "unlockVault") as |form|}}
+  <div class="layout-row layout-nowrap">
+    {{form.input type="password" label="Enter Master Password" value=password onChange=(action (mut password)) iconRight="vpn_key" errors=unlockErrors onFocus=(action "clearErrors")}}
+    {{!-- {{#paper-button iconButton=true onClick=(action "unlockVault")}}{{paper-icon "vpn_key"}}{{/paper-button}} --}}
+  </div>
+{{/paper-form}}

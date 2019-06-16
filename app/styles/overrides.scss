@@ -1,0 +1,15 @@
+md-list-item .md-avatar,
+md-list-item .md-list-item-inner .md-avatar,
+md-card-title-media img {
+  overflow: hidden;
+}
+
+md-sidenav md-toolbar .md-button.md-fab {
+  position: absolute;
+  bottom: -30px;
+  right: 16px;
+}
+
+md-chips.md-default-theme .md-chips, md-chips .md-chips {
+  box-shadow: none;
+}

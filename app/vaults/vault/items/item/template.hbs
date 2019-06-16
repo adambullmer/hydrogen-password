@@ -1,0 +1,44 @@
+{{#paper-card class="item-details" as |card|}}
+  {{#card.title as |title|}}
+    {{title.media size="sm" src=(favicon model.url) alt=model.title title=model.title}}
+    {{#title.text}}
+      <h2>{{model.title}}</h2>
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content class="layout-column layout-fill"}}
+    {{#card.media}}
+      {{#paper-list}}
+
+        {{#each primaryFields as |field|}}
+          {{vault-field model=field isEditing=isEditing}}
+        {{/each}}
+
+        {{paper-divider}}
+
+        {{#each userFields as |section|}}
+          {{#paper-subheader}}{{section.title}}{{/paper-subheader}}
+          {{#each section.fields as |field|}}
+            {{vault-field model=field isEditing=isEditing}}
+          {{/each}}
+        {{/each}}
+
+        {{#paper-subheader}}Notes{{/paper-subheader}}
+        {{#paper-item}}{{model.details.notesPlain}}{{/paper-item}}
+
+        {{#if model.overview.tags}}
+          <h4>Tags</h4>
+          {{paper-chips content=model.overview.tags readOnly=true}}
+        {{/if}}
+
+        {{#paper-item}}CREATED: {{date-format model.createdAt}}{{/paper-item}}
+        {{#paper-item}}MODIFIED: {{date-format model.updatedAt}}{{/paper-item}}
+      {{/paper-list}}
+
+      {{{json model}}}
+    {{/card.media}}
+  {{/card.content}}
+  {{!-- {{#card.actions}}
+    {{#paper-button}}Action 1{{/paper-button}}
+    {{#paper-button}}Action 2{{/paper-button}}
+  {{/card.actions}} --}}
+{{/paper-card}}

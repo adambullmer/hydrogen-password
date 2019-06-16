@@ -1,0 +1,8 @@
+<div id="index" class="flex layout-column layout-fill">
+  {{#paper-card-content class="layout-column flex layout-align-center-center"}}
+    <p>{{paper-icon "lock"}}</p>
+    {{vault-unlock onUnlock=(action 'unlock')}}
+
+    {{outlet}}
+  {{/paper-card-content}}
+</div>

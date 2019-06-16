@@ -1,0 +1,15 @@
+{{#if isRevealing}}
+  <span>{{model}}</span>
+{{else}}
+  {{!-- Obligatory 10 Bullets for a password --}}
+  <span>&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;</span>
+{{/if}}
+
+<div>
+  {{#paper-button iconButton=true onClick="toggleVisibility"}}
+    {{paper-icon visibilityIcon}}
+  {{/paper-button}}
+  {{#paper-button iconButton=true onClick=(action "copy")}}
+    {{paper-icon "file_copy"}}
+  {{/paper-button}}
+</div>

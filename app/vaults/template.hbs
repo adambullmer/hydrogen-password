@@ -1,0 +1,57 @@
+{{#paper-toolbar as |toolbar|}}
+  {{#toolbar.tools}}
+    {{#paper-sidenav-toggle as |toggleAction|}}
+      {{#paper-button onClick=(action toggleAction) iconButton=true class="hide-gt-sm"}}
+        {{paper-icon "menu"}}
+      {{/paper-button}}
+    {{/paper-sidenav-toggle}}
+
+    <h1>Hydrogen Password</h1>
+    <span class="flex"></span>
+
+    {{#paper-menu as |menu|}}
+      {{#menu.trigger}}
+        {{#paper-button iconButton=true}}
+          {{paper-icon "more_vert"}}
+        {{/paper-button}}
+      {{/menu.trigger}}
+      {{#menu.content width=4 as |content|}}
+        {{#content.menu-item onClick="lockVault"}}
+          {{paper-icon 'lock'}}
+          <span>Lock Vault</span>
+        {{/content.menu-item}}
+      {{/menu.content}}
+    {{/paper-menu}}
+
+  {{/toolbar.tools}}
+{{/paper-toolbar}}
+
+{{#paper-sidenav-container}}
+  {{#paper-sidenav lockedOpen="gt-sm" open=isSidenavOpen onToggle=(action (mut isSidenavOpen))}}
+    {{#paper-toolbar class="site-content-toolbar" tall=true}}
+      <div class="layout-column layout-align-center-center" style="width:100%; height:100%">
+        <img src="/icon_512.png" class="logo" alt="Hydrogen Password">
+        {{!-- <div>Hydrogen Password</div> --}}
+      </div>
+      {{#paper-button raised=true accent=true fab=true  href=(href-to 'vaults.add')}}
+        {{paper-icon 'add'}}
+      {{/paper-button}}
+    {{/paper-toolbar}}
+    {{#paper-content}}
+      {{#paper-list}}
+        {{#paper-subheader}}Vaults{{/paper-subheader}}
+        {{#each model as |vault|}}
+          {{#paper-item href=(href-to "vaults.vault" vault.id)}}Primary{{/paper-item}}
+        {{/each}}
+      {{/paper-list}}
+
+      {{outlet "sidebar"}}
+    {{/paper-content}}
+  {{/paper-sidenav}}
+
+  {{#paper-card-content class="flex"}}
+    <div class="layout-fill layout-align-start-start layout-row">
+      {{outlet}}
+    </div>
+  {{/paper-card-content}}
+{{/paper-sidenav-container}}

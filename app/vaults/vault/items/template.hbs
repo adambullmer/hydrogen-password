@@ -1,0 +1,23 @@
+<div id="vault_items" class="layout-fill layout-column" style="width: 350px;">
+  {{#paper-card class="layout-fill layout-column"}}
+    <div style="margin: 0 8px;">
+      {{paper-input placeholder="Search Hydrogen Password" value=searchTerm onChange=(action (mut searchTerm))}}
+      <p class="flex-auto">
+        {{sortedList.length}} items sorted by title
+        {{#if isDescending}}
+          {{#link-to "vaults.vault.items" (query-params direction="asc")}}{{paper-icon 'arrow_drop_up'}}{{/link-to}}
+        {{else}}
+          {{#link-to "vaults.vault.items" (query-params direction="desc")}}{{paper-icon 'arrow_drop_down'}}{{/link-to}}
+        {{/if}}
+      </p>
+    </div>
+    {{paper-divider}}
+    {{vault-item-list model=sortedList category=categoryCode deleted=deleted favorite=favorite sortBy=sortBy direction=direction}}
+  {{/paper-card}}
+</div>
+
+<div id="main" class="flex-100 layout-column layout-fill" role="main" style="overflow-y: scroll">
+  <div class="layout-fill">
+    {{outlet}}
+  </div>
+</div>

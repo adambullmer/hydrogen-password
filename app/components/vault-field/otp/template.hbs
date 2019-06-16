@@ -1,0 +1,10 @@
+<div class="token">
+  <span>{{get displayToken 0}}</span><span>{{get displayToken 1}}</span>
+</div>
+
+<div class="layout-row">
+  {{countdown-timer max=30 current=timeLeft}}
+  {{#paper-button iconButton=true onClick=(action "copy")}}
+    {{paper-icon "file_copy"}}
+  {{/paper-button}}
+</div>

@@ -1,0 +1,15 @@
+{{#paper-list style="overflow-y: scroll"}}
+  {{#each sections as |section|}}
+    {{#paper-subheader}}{{section.header}}{{/paper-subheader}}
+    {{#each section.categories as |category|}}
+      {{#if (get counts category.code)}}
+        {{#paper-item class="category-item" href=(href-to "vaults.vault.items" (query-params category=category.code))}}
+          <div class="layout-row layout-align-space-between-center flex">
+            <span class="category-item--text">{{paper-icon category.icon}} {{category.name}}</span>
+            {{paper-chips content=(get counts category.code) readOnly=true}}
+          </div>
+        {{/paper-item}}
+      {{/if}}
+    {{/each}}
+  {{/each}}
+{{/paper-list}}

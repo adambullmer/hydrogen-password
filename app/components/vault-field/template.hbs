@@ -1,0 +1,10 @@
+{{#paper-item class="md-2-line"}}
+  <div class="md-list-item-text">
+    {{#if isEditing}}
+      {{paper-input label=model.t value=model.v onChange=(action (mut model.v))}}
+    {{else}}
+      <h4>{{model.t}}</h4>
+      {{component (concat "vault-field/" (field-type model)) model=model.v isEditing=isEditing}}
+    {{/if}}
+  </div>
+{{/paper-item}}

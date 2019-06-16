@@ -1,0 +1,19 @@
+{{#paper-list class="layout-fill"}}
+  {{#paper-virtual-repeat listHeadings class="layout-fill" as |visibleItems|}}
+    {{#each visibleItems as |item|}}
+      {{#if item.header}}
+        {{#paper-subheader}}{{item.letter}}{{/paper-subheader}}
+      {{else}}
+        {{#paper-item class="md-2-line" href=(href-to "vaults.vault.items.item" item (query-params category=category))}}
+          <img src="{{favicon item.url}}" alt="{{item.title}}" class="md-avatar">
+          <div class="md-list-item-text">
+            <h3>{{item.title}}</h3>
+            <h4>{{item.info}}</h4>
+          </div>
+        {{/paper-item}}
+      {{/if}}
+    {{else}}
+      {{#paper-item}}No Items Found{{/paper-item}}
+    {{/each}}
+  {{/paper-virtual-repeat}}
+{{/paper-list}}
